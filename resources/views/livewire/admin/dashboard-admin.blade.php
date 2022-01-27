@@ -1,5 +1,7 @@
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
 
                      <div class="flex justify-center my-10 h-screen">
                           <div>
@@ -41,10 +43,10 @@
                                   </thead>
                                   <tbody>
                                      @foreach ($users as $user)
-                                     @foreach ($usersInfo as $userInfo)
+                                     
                                          
                                     
-                                         @if ($user->id==$userInfo->user_id)
+                                        
                                         
                                           <tr
                                               class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100" id="line{{$user->id}}">
@@ -61,16 +63,16 @@
                                                   {{$user->email}}
                                               </td>
                                               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                 {{$userInfo->phone}} 
+                                                 {{$user->phone}}  
                                               </td>
                                               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                 {{ $userInfo->birthday}}
+                                                 {{ $user->birthday}} 
                                               </td>
                                               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                 {{$userInfo->school}}
+                                                  {{$user->school}} 
                                               </td>
                                               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                  {{$userInfo->updated_at}}
+                                                  {{$user->updated_at}}
                                               </td>
                                               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                   <div class="flex space-x-3 justify-center">
@@ -160,8 +162,8 @@
                                               </td>
                                           </tr>
                                           
-                                          @endif
-                                          @endforeach
+                                          {{-- @endif
+                                          @endforeach --}}
                                           @endforeach
                                   </tbody>
                               </table>

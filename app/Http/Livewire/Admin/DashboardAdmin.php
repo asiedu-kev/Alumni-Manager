@@ -5,15 +5,25 @@ namespace App\Http\Livewire\Admin;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\UserInfo;
+use Illuminate\Http\Request;
 use App\Http\Livewire\Auth\Register;
 
 class DashboardAdmin extends Component
 {
-    public function render()
+    public function render(Request $request)
     {
-        $users=User::paginate(10);
-        $usersInfo=UserInfo::paginate(10);
-        return view('livewire.admin.dashboard-admin',['users'=>$users,'usersInfo'=>$usersInfo])
+        $search = $request->input('search');
+        // dd($search);
+        $users = User::query()
+        ->join('user_infos', 'users.id', '=', 'user_infos.user_id')
+        ->where('last_name', 'LIKE', "%{$search}%")
+        ->orWhere('first_name', 'LIKE', "%{$search}%")
+        ->get();
+        //$users=User::paginate(10);
+        
+        
+        
+        return view('livewire.admin.dashboard-admin',['users'=>$users])
         ->layout('layouts.app');
     }
 }
