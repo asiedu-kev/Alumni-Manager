@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\DashboardAdminController;
 
     use App\Http\Livewire\Auth\Login;
@@ -30,4 +31,6 @@ Route::get('admin/user/user:edit',[MainController::class,'displaySingle'])->name
 //Route::delete('admin/user/user:delete',[MainController::class,'destroy'])->name('user.destroy');
 Route::get('admin/user/delete/{id}', [MainController::class,'destroy'])->name('user.destroy');
 Route::post('admin/user/moreInfo', [MainController::class,'moreInfo']);
+Route::any('edit-profile/user/{id}',[EditProfileController::class,'editProfile'])->name('edit.profile');
+
 

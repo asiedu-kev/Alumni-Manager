@@ -15,7 +15,6 @@ class DashboardAdmin extends Component
         $search = $request->input('search');
         // dd($search);
         $users = User::query()
-        ->join('user_infos', 'users.id', '=', 'user_infos.user_id')
         ->where('last_name', 'LIKE', "%{$search}%")
         ->orWhere('first_name', 'LIKE', "%{$search}%")
         ->get();
@@ -23,7 +22,6 @@ class DashboardAdmin extends Component
         
         
         
-        return view('livewire.admin.dashboard-admin',['users'=>$users])
-        ->layout('layouts.app');
+        return view('livewire.admin.dashboard-admin',['users'=>$users])->layout('layouts.app');
     }
 }

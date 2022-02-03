@@ -21,7 +21,16 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->date('birthday');
+            $table->integer('phone');
+            $table->string('curriculum_vitae', 100);
+            $table->string('school', 100);
+            $table->string('study_field', 100);
+            $table->string('interest',100);
+            $table->boolean('entrepreuneuship_lover');
+            $table->string('entrepreuneuship_level', 100);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

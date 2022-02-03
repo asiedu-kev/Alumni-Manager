@@ -111,19 +111,22 @@ class Register extends Component
             'last_name' => $this->last_name,
             'email' => $this->email,
             'password' => $this->password,
-        ]);
-        $this->curriculum_vitae->storeAs('cv',$user->last_name.'_'.$user->first_name);
-        $user_info = UserInfo::create([
-            'user_id'=> $user->id,
             'birthday' => $this->birthday,
             'phone' => $this->phoneNumber,
-            'curriculum_vitae' => $user->last_name.'_'.$user->first_name,
+            'curriculum_vitae' => $this->last_name.'_'.$this->first_name,
             'school' => $this->selected_school,
             'study_field' => $this->selected_field,
             'interest' => $this->user_interest,
             'entrepreuneuship_lover' => $this->entrepreuneurial_interest == true ? 1 : 0,
             'entrepreuneuship_level' => $this->entrepreuneurial_engagement_level
         ]);
+        
+        $this->curriculum_vitae->storeAs('cv',$user->last_name.'_'.$user->first_name);
+        
+      
+       
+            
+        
         return redirect()->intended('/');
     }
     public function render()

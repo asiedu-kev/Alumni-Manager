@@ -22,6 +22,15 @@ class User extends Authenticatable
         'first_name',
         'email',
         'password',
+        'user_id',
+        'birthday',
+        'phone',
+        'curriculum_vitae',
+        'school',
+        'study_field',
+        'interest',
+        'entrepreuneuship_lover',
+        'entrepreuneuship_level',
        
 
 

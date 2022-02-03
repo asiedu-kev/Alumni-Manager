@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
-use App\Models\UserInfo;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
@@ -16,6 +14,13 @@ class MainController extends Controller
         
     //     return view('user.display',['users'=>$user]);
     // }
+    public $fields = ['1' => ['Genie Logiciel', 'Securite Informatique','Internet et Multimedia'],
+    '2' => ['PSA','GTA','GE'], '3' => ['STPV','STPA','AGRN','NSTA','GRPA'],'4' => ['ERSE']];
+    public $selected_list_fields = [];
+    public $interests = ['Nutrition (technologie alimentaire, diététique, restauration)',
+    'Agriculture (production animale, santé animale, production végétale)','Numérique (développement, réseaux, multimédia)',
+    'Ressources naturelles (eau, forêt, aménagement)','Infrastructures (construction, énergies, environnement)'
+    ];  
     public function destroy($id)
     {
         //dd($user);
@@ -33,7 +38,6 @@ class MainController extends Controller
         \Log::info("moreInfo()");
         //$user = User::join('userInfos', 'userInfos.user_id', '=', 'users.id')->where('user_id',$_POST['id'])->get();
         $user = DB::table('users')
-        ->join('user_infos', 'users.id', '=', 'user_infos.user_id')
         ->where('users.id',$_POST['id'])
         ->get();
         // $userInfo=UserInfo::where('user_id',$_POST['id'])->get();
@@ -42,5 +46,8 @@ class MainController extends Controller
 
         return $user;
     }
+   
+
+   
     
 }
